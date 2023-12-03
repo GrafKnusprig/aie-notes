@@ -789,9 +789,9 @@ Let's use the same Bayesian network example with variables $B$ (Burglary), $E$ (
 
 The key idea of likelihood weighting is that it assigns higher weights to samples that are consistent with the evidence, making the estimation more accurate for the observed variables. This method is particularly useful when the query involves a specific set of evidence variables, and it can provide a computationally efficient approximation in situations where exact inference is challenging.
 
-## **5. Machine Learning **
+## **5. Machine Learning**
 
-![MachineLearningSlide08](image.png)
+![MachineLearningSlide08](image-3.png)
 ---
 - Supervised machine learning
   - There is one (or more) specific things to predict
@@ -1039,6 +1039,76 @@ $$ \text{distMax}(x,y)=\text{max}\{|x_i-y_i|| 1 \le i \le d \} $$
 - Hamming - distance:
   - Number of different attribute values E.g. x=(young, teacher, yes); y=(old, student, yes);
   -> distHamming(x,y)=2
+
+## **6. Deep Learning**
+
+>“Deep Learning is about learning the knowledge chunk in a form of multiple levels of
+representation and abstraction to make up higher level information from lower level
+information (e.g., sound, image, etc.).”
+
+>“Deep learning (also known as deep structured learning or hierarchical learning) is
+learning data representations, as opposed to task-specific algorithms.”
+
+>“Deep learning is a class of machine learning algorithms that: (1) use a cascade of
+multiple layers of nonlinear processing units for feature extraction and transformation.
+Each successive layer uses the output from the previous layer as input, (2) learn multiple
+levels of representations that correspond to different levels of abstraction; the levels form
+a hierarchy of concepts.”
+
+### Representation:
+- machine learning uses features
+- good features are often not in cluded directly in the data
+- Deep learning: construct features automatically from low level gfeatures
+
+### Simple perceptron:
+![Alt text](image.png)
+
+$$ y = f ( \sum_{i=1}^kw_ix_i + b) = f(w^Tx+b) $$
+
+- $w_i$: weights are model parameters
+- $x_i$: inputs, are features
+- $y_i$: output, is the prediction
+- activation function is some non-linear function
+
+---
+- linear activation $ f(x)=x $ Linar Regression
+- sigmoid activation $ f(x) = \sigma(x) $ Logistic Regression
+- threshold activation $ f(x) = \begin{cases}
+    1, x \ge 0 \\
+    0, else
+    \end{cases} $ Logistic Regression
+
+
+### Sigmoid:
+
+![Alt text](image-2.png)
+
+
+### Learning:
+
+- We want to fit the parameters to the input/output training data
+- we aim to find the paramters so that a **loss** function gets minimized
+- the **loss** function compares the prediction of the current paramets to the known correct output
+
+### Maximum Likelihood
+
+- Assume that for each instance, we make a guess
+  - With the predicted probability pM of the model M we guess that the instance has a
+positive label (encoded as 1)
+  - With the predicted probability pM of the model M we guess that the instance has a
+negative label (encoded as 0)
+
+- What is the likelihood of „guessing“ correct in an instance
+
+$$ P_M(y|x, w) = o^y \cdot (1-o)^{(1-y)} \equiv P_M(y|x,w) = \begin{cases}o, \text {if } y = 1 \\ 1-o, \text{if } y + 0\end{cases} $$
+
+**GOAL:** find optimal weights which maximize the likelihood of guesseing correctly in all instances $(x_j, y_j)$
+
+### Binary Cross Entropy
+
+![Alt text](image-4.png)
+
+>known as binary cross entropy loss
 
 
 
